@@ -1,13 +1,15 @@
 import {Box, Button} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import {ModeEnum, Task} from "./todo-list.tsx";
+import {ModeEnum, Task} from "./todo-list";
 
-export const TodoButtons = ({tasks, setMode, handleClearCompleted}: {
+export const TodoButtons = ({tasks, setMode, setTasks}: {
     tasks: Task[],
     setMode: (mode: ModeEnum) => void,
-    handleClearCompleted: () => void,
+    setTasks: (tasks: Task[]) => void
 }) => {
-
+    const handleClearCompleted = () => {
+        setTasks(tasks.filter(task => !task.completed));
+    };
     return (<Box sx={{
         display: 'flex',
         justifyContent: 'space-between',
@@ -24,11 +26,12 @@ export const TodoButtons = ({tasks, setMode, handleClearCompleted}: {
             alignItems: 'center',
             flexDirection: {xs: 'column', md: 'row'}
         }}><Box>
-            <Button onClick={() => setMode(ModeEnum.All)} variant="text">All</Button>
-            <Button onClick={() => setMode(ModeEnum.Active)} variant="text">Active</Button>
-            <Button onClick={() => setMode(ModeEnum.Completed)} variant="text">Completed</Button>
+            <Button data-testid="all-button" onClick={() => setMode(ModeEnum.All)} variant="text">All</Button>
+            <Button data-testid="active-button" onClick={() => setMode(ModeEnum.Active)} variant="text">Active</Button>
+            <Button data-testid="completed-button" onClick={() => setMode(ModeEnum.Completed)}
+                    variant="text">Completed</Button>
         </Box>
-            <Button onClick={handleClearCompleted} variant="text" color="error">
+            <Button data-testid="clear-completed-button" onClick={handleClearCompleted} variant="text" color="error">
                 Clear completed
             </Button></Box>
     </Box>)

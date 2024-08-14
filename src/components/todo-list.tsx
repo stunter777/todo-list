@@ -14,13 +14,26 @@ export enum ModeEnum {
     Completed = 'completed',
 }
 
-export const TodoList = ({tasks, handleToggle, mode, handleSaveTask, handleEditTask}: {
+export const TodoList = ({tasks, setTasks, mode}: {
     tasks: Task[],
-    handleToggle: (id: number) => void,
+    setTasks: (tasks: Task[]) => void,
     mode: ModeEnum,
-    handleSaveTask: (id: number, newText: string) => void,
-    handleEditTask: (id: number) => void
 }) => {
+    const handleToggle = (id: number) => {
+        setTasks(tasks.map(task =>
+            task.id === id ? {...task, completed: !task.completed} : task
+        ));
+    };
+    const handleSaveTask = (id: number, newText: string) => {
+        setTasks(tasks.map(task =>
+            task.id === id ? {...task, text: newText, isEditing: false} : task
+        ));
+    };
+    const handleEditTask = (id: number) => {
+        setTasks(tasks.map(task =>
+            task.id === id ? {...task, isEditing: true} : task
+        ));
+    };
     return (<List sx={{height: '300px', overflowY: 'scroll'}}>
         {tasks.filter(task => mode === ModeEnum.All || (mode === ModeEnum.Active && !task.completed) || (mode === ModeEnum.Completed && task.completed)).map(task => (
             <ListItem key={task.id} sx={{padding: '0 16px', display: 'flex', alignItems: 'center'}}>
