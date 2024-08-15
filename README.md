@@ -9,7 +9,7 @@
 ## Доступ к развернутой версии
 
 Вы можете попробовать приложение, посетив развернутую версию по следующему
-адресу: [Todo List App](https://todo-list-acyh-dax5d4ct7-stunter777s-projects.vercel.app/).
+адресу: [Todo List App](https://todo-list-acyh.vercel.app/).
 
 ## Запуск проекта локально
 
