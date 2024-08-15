@@ -1,12 +1,5 @@
 {
-  "files": [],
   "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.node.json"
-    }
   ],
   "compilerOptions": {
     "target": "ESNext",
@@ -24,10 +17,10 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "src",
-    "setupTests.js"
+    "src"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }
