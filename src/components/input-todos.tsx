@@ -31,7 +31,7 @@ export const InputTodos = ({newTaskText, setTasks, setNewTaskText, tasks}: {
                     }
                 }}
             />
-            <Button onClick={handleAddTask} variant="contained" sx={{marginLeft: '10px'}}>
+            <Button data-testid={'add-button'} onClick={handleAddTask} variant="contained" sx={{marginLeft: '10px'}}>
                 Add
             </Button>
         </Box>
